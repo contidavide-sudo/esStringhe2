@@ -4,16 +4,24 @@
     {
         static int Trasformazione(string num)
         {
-            int numeroTras = 0, cont = 0;
+            int numeroTras = 0, potenza, cont=0;
 
-            for (int i = 7; i >= 0; i--)
+            for (int i = num.Length - 1; i >= 0; i--)
             {
-                if (num[i] == 1)
+                if (num[i] == '1') 
                 {
-                    numeroTras=numeroTras+2
-
+                    potenza = (int)Math.Pow(2, cont);
+                    numeroTras = numeroTras + potenza;
+                    cont = cont + 1;
+                }
+                else
+                {
+                    numeroTras = numeroTras + 0;
+                    cont = cont + 1;
                 }
             }
+
+            return numeroTras;
         }
         static void Main(string[] args)
         {
@@ -24,7 +32,7 @@
             Console.WriteLine("Inserisci il numero binario di 8 bit: ");
             numero = Console.ReadLine();
 
-            Trasformazione(numero);
+            Console.WriteLine($"Numero in decimale: {Trasformazione(numero)} ");
 
         }
     }
